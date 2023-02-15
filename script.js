@@ -18,10 +18,13 @@ const matched = document.querySelector('.matched');
 // Generating the pin
 
 generatePin.addEventListener('click', function(){
+    thePin.value = '';
     thePin.value = getRandomNumber(1000, 9999);
     writeThePin.value = '';
     submitBtn.disabled = false;
     actionLeft.innerText = 3;
+    document.querySelector('.action-left').style.display = 'none';
+    notMatched.style.display = 'none';
 });
 
 function getRandomNumber(min, max) {
@@ -61,6 +64,7 @@ submitBtn.addEventListener('click', function(){
             actionLeft.innerText = 3;
         },1000);
     } else {
+        document.querySelector('.action-left').style.display = 'block';
         matched.style.display = 'none';
         notMatched.style.display = 'block';
         actionLeft.innerText = parseInt(actionLeft.innerText) - 1;
